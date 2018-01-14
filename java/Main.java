@@ -16,8 +16,8 @@ public class Main {
         g.makeFromAdjMatrix(matrix);
         System.out.println(g.printMe());
 
+        BFS bfs = new BFS(g);
 
-
-
+        bfs.traverseBFS(g.getRandomNode());
     }
 }

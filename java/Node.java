@@ -1,6 +1,6 @@
 package com.company.aman.java;
-
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Node {
     private String id;
@@ -35,6 +35,16 @@ public class Node {
         if(connections.get(n) == null) {
             connections.put(n, canTraverse);
         }
+    }
+
+    public LinkedList<Node> getConnections() {
+        LinkedList<Node> ret = new LinkedList<Node>();
+        for(Node s : connections.keySet()) {
+            if(connections.get(s)) {
+                ret.add(s);
+            }
+        }
+        return ret;
     }
 
     public int gethId() {

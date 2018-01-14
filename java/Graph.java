@@ -2,6 +2,7 @@ package com.company.aman.java;
 
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.UUID;
 
 public class Graph {
@@ -15,7 +16,7 @@ public class Graph {
     public Graph(int n) {
         nodes = new HashMap<String, Node>();
         for(int i = 0; i < n; i++) {
-            addNode(createNode());
+            addNode(createNode(String.valueOf(i)));
         }
     }
 
@@ -50,7 +51,7 @@ public class Graph {
         }
 
         for(int i = 0; i < matrix.length; i++) {
-            nds[i] = createNode();
+            nds[i] = createNode(String.valueOf(i));
         }
 
         for(int i = 0; i < matrix.length; i++) {
@@ -68,8 +69,8 @@ public class Graph {
 
     }
 
-    private Node createNode() {
-        return new Node(UUID.randomUUID().toString(), "some data");
+    private Node createNode(String data) {
+        return new Node(UUID.randomUUID().toString(), data);
     }
 
     public String printMe() {
@@ -78,5 +79,11 @@ public class Graph {
             ret += "\n" + nodes.get(s).getString();
         }
         return ret;
+    }
+
+    public Node getRandomNode() {
+        Object[] entries = nodes.values().toArray();
+        Random rand = new Random();
+        return (Node) entries[rand.nextInt(entries.length - 1)];
     }
 }
